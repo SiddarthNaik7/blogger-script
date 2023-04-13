@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Love Calculator</title>
+    <style>
+       /* Header Styles */
+  header {
+    background-color: #FF1493;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  header img {
+    height: 50px;
+    margin-right: 10px;
+  }
+  
+  header h1 {
+    color: white;
+    font-size: 32px;
+    margin: 0;
+  }
+  
+  form {
+  margin: 50px auto;
+  max-width: 600px;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  display: flex; /* add this property to use flexbox */
+  flex-direction: column; /* make the child elements stack vertically */
+  align-items: center; /* center the child elements horizontally */
+}
+
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #444;
+  }
+  
+  input[type="text"] {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  width: 50%; /* adjust this value to make the field shorter */
+  margin: 0 auto; /* center the field horizontally */
+  box-sizing: border-box;
+}
+
+
+  button {
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: #FF1493;
+    color: white;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+
+  button:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: skewX(-45deg);
+    transition: all 0.4s ease-in-out;
+  }
+
+  button:hover:before {
+    left: 100%;
+  }
+
+  #loveResult {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #FF1493;
+  }
+
+  .heart {
+    display: inline-block;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .heart:before,
+  .heart:after {
+    position: absolute;
+    content: "";
+    left: 20px;
+    top: 0;
+    width: 20px;
+    height: 32px;
+    background: #FF1493;
+    border-radius: 20px 20px 0 0;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+  }
+
+  .heart:after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+  }
+
+  .heart.full:before,
+  .heart.full:after {
+    background: #fff;
+  }
+
+  .heart.full:before {
+    animation: fillHeart 0.5s ease-in-out forwards;
+  }
+
+  @keyframes fillHeart {
+    0% {
+      height: 0;
+    }
+    50% {
+      height: 32px;
+    }
+    100% {
+      height: 32px;
+      top: 0;
+    }
+  }
+
+      
+      
+      
+      
+      
+      /* Footer Styles */
+footer {
+  background-color: #FFC0CB;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.links-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+a {
+  color: #333;
+  font-size: 16px;
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+  color: #FF1493;
+}
+
+   
+      
+      
+      
+      
+      /* Reset Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Global Styles */
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+  color: #FF1493;
+}
+
+/* Header Styles */
+header {
+  background-color: #FF1493;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+header img {
+  height: 50px;
+  margin-right: 10px;
+}
+
+header h1 {
+  color: white;
+  font-size: 32px;
+  margin: 0;
+}
+
+nav ul {
+  display: flex;
+}
+
+nav li {
+  margin-right: 20px;
+}
+
+nav a {
+  color: white;
+  font-size: 16px;
+
+</style>
+
+  </head>
+  <body>
+    
+    <header>
+     <a href="#"> <div class="logo">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjIEk-hTRM3e82VlodU4DA43dodku154_h6w1bpEmqcV4hjVrSEKOg-pqPRvaAEb0-TOMMLaQXx5drD36WB_zO3GKv0tcnAd_BBB4tP6Ryfj1hgCmMhCv4CluWcCZCA0546FiqCp7qAL56xDFOZg9N8pvNO5xnLLQW0n5JBrvs-32mvRgzIx4pIievJag/s508/love%20calculator.png" alt="Love Calculator Logo">
+       
+      </div>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="https://lovecalculatorredy.blogspot.com/">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    
+    
+    
+    
+    <h1>Love Calculator</h1>
+    <div>
+      <label for="name1">Enter Your Name:</label>
+      <input type="text" id="name1" name="name1" required>
+    </div>
+    <div>
+      <label for="name2">Enter Your Crush's Name:</label>
+      <input type="text" id="name2" name="name2" required>
+    </div>
+    <div>
+      <button type="button" onclick="calculateLove()">Calculate Love</button>
+    </div>
+    <div id="loveResult"></div>
+
+    <script>
+    
+   function calculateLove() {
+  var name1 = document.getElementById("name1").value.trim().toLowerCase();
+  var name2 = document.getElementById("name2").value.trim().toLowerCase();
+  
+  var loveScore = getLoveScore(name1, name2);
+  displayLoveResult(loveScore);
+}
+
+function getLoveScore(name1, name2) {
+  var combinedNames = name1 + name2;
+  var loveScore = 0;
+
+  for (var i = 0; i < combinedNames.length; i++) {
+    loveScore += combinedNames.charCodeAt(i);
+  }
+
+  loveScore = loveScore % 101;
+  return loveScore;
+}
+
+function displayLoveResult(loveScore) {
+  var loveResultElement = document.getElementById("loveResult");
+
+  if (loveScore >= 80) {
+    loveResultElement.innerHTML = "Congratulations! Your love score is " + loveScore + "%. You are a perfect match!";
+  } else if (loveScore >= 50) {
+    loveResultElement.innerHTML = "Your love score is " + loveScore + "%. You have a good chance of success!";
+  } else {
+    loveResultElement.innerHTML = "Your love score is " + loveScore + "%. Sorry, it doesn't look good!";
+  }
+}
+
+      
+      
+      var heartElement = document.getElementById("heart");
+if (loveScore >= 80) {
+  heartElement.classList.add("full");
+} else {
+  heartElement.classList.remove("full");
+}
+
+      
+      
+      function calculateLove() {
+        var name1 = document.getElementById("name1").value.trim().toLowerCase();
+        var name2 = document.getElementById("name2").value.trim().toLowerCase();
+        var loveScore = getLoveScore(name1, name2);
+        document.getElementById("loveResult").innerHTML = "Your love score is " + loveScore + "%!";
+      }
+
+    </script>
+    
+    
+   <footer>
+      <div class="links-container">
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Use</a></li>
+           <li><a href="#">Earntimes</a></li>
+        </ul>
+        <div class="social-icons">
+          <a href="#"><i class="fa fa-facebook"></i></a>
+          <a href="#"><i class="fa fa-twitter"></i></a>
+          <a href="#"><i class="fa fa-instagram"></i></a>
+        </div>
+      </div>
+    </footer>
+    
+    
+  </body>
+</html>
